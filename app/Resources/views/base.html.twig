@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>tYao-demigod</title>
+    <link href="{{ asset('static/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/dist/css/sb-admin-2.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/vendor/morrisjs/morris.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <!-- 导航栏 -->
+        {% include '::nav.html.twig' %}
+
+        <!-- 菜单 -->
+        {% include '::menu.html.twig' %}
+    </nav>
+
+    <!-- body -->
+    {% block content %}
+    {% endblock %}
+</div>
+<script src="{{ asset('static/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('static/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('static/vendor/metisMenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('static/vendor/raphael/raphael.min.js') }}"></script>
+<script src="{{ asset('static/vendor/morrisjs/morris.min.js') }}"></script>
+<script src="{{ asset('static/data/morris-data.js') }}"></script>
+<script src="{{ asset('static/dist/js/sb-admin-2.js') }}"></script>
+</body>
+</html>

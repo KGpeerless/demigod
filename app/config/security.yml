@@ -1,0 +1,33 @@
+security:
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+
+    providers:
+        in_mysql:
+            id: app.user.provider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            anonymous: ~
+            http_basic: ~
+            provider: in_mysql
+            form_login:
+                login_path: login
+                check_path: login
+                success_handler: app.authentication.handler
+                use_referer: true
+            logout:
+                path: logout
+                target: login
+                success_handler: app.authentication.handler
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_ADMIN }
