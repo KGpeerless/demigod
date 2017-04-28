@@ -61,7 +61,7 @@ class User implements UserInterface, EquatableInterface
     /**
      * @var Merchant
      *
-     * @ORM\ManyToOne(targetEntity="Merchant", inversedBy="users", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Merchant", inversedBy="users")
      * @ORM\JoinColumn(name="merchant_id", referencedColumnName="id")
      */
     private $merchant;
@@ -102,6 +102,7 @@ class User implements UserInterface, EquatableInterface
         return $this->id;
     }
 
+
     /**
      * Get username
      *
@@ -112,6 +113,7 @@ class User implements UserInterface, EquatableInterface
         return $this->username;
     }
 
+
     /**
      * Get password
      *
@@ -121,6 +123,8 @@ class User implements UserInterface, EquatableInterface
     {
         return $this->password;
     }
+
+
 
     /**
      * Get roles
@@ -143,107 +147,4 @@ class User implements UserInterface, EquatableInterface
         return $this->apiKey;
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return User
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Set roles
-     *
-     * @param array $roles
-     *
-     * @return User
-     */
-    public function setRoles($roles)
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * Set apiKey
-     *
-     * @param string $apiKey
-     *
-     * @return User
-     */
-    public function setApiKey($apiKey)
-    {
-        $this->apiKey = $apiKey;
-
-        return $this;
-    }
-
-    /**
-     * Set isCreator
-     *
-     * @param boolean $isCreator
-     *
-     * @return User
-     */
-    public function setIsCreator($isCreator)
-    {
-        $this->isCreator = $isCreator;
-
-        return $this;
-    }
-
-    /**
-     * Get isCreator
-     *
-     * @return boolean
-     */
-    public function getIsCreator()
-    {
-        return $this->isCreator;
-    }
-
-    /**
-     * Set merchant
-     *
-     * @param \AppBundle\Entity\Merchant $merchant
-     *
-     * @return User
-     */
-    public function setMerchant(\AppBundle\Entity\Merchant $merchant = null)
-    {
-        $this->merchant = $merchant;
-
-        return $this;
-    }
-
-    /**
-     * Get merchant
-     *
-     * @return \AppBundle\Entity\Merchant
-     */
-    public function getMerchant()
-    {
-        return $this->merchant;
-    }
 }

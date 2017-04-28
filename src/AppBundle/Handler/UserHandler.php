@@ -6,6 +6,8 @@ use AppBundle\Form\UserType;
 
 class UserHandler extends HandlerBase
 {
+    use UserEncryptTrait;
+
     protected $formType = UserType::class;
 
     public function findOneByIdentity($identity, $type = null)

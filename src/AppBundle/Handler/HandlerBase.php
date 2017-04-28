@@ -2,30 +2,10 @@
 namespace AppBundle\Handler;
 
 use AppBundle\Exception\InvalidFormException;
-use AppBundle\Repository\AdministratorRepository;
-use AppBundle\Repository\AgentRepository;
-use AppBundle\Repository\BankCardRepository;
-use AppBundle\Repository\CashCouponRepository;
-use AppBundle\Repository\CashOutOrderRepository;
-use AppBundle\Repository\CouponRepository;
-use AppBundle\Repository\MessageOrderRepository;
-use AppBundle\Repository\OfflineCouponRepository;
-use AppBundle\Repository\OrderRepository;
-use AppBundle\Repository\GzGhtApplyRepository;
-use AppBundle\Repository\GzGhtPayConfigRepository;
-use AppBundle\Repository\ManagerRepository;
-use AppBundle\Repository\MerchantRechargeRepository;
 use AppBundle\Repository\MerchantRepository;
-use AppBundle\Repository\PayConfigRepository;
-use AppBundle\Repository\PayRateRepository;
-use AppBundle\Repository\QuickPayOrderRepository;
-use AppBundle\Repository\RefundOrderRepository;
-use AppBundle\Repository\StoreActiveNumberRepository;
-use AppBundle\Repository\StoreRepository;
-use AppBundle\Repository\UploadFileRepository;
 use AppBundle\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
-use Knp\Component\Pager\Paginator;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Component\Form\FormFactoryInterface;
 
 abstract class HandlerBase
@@ -144,6 +124,14 @@ abstract class HandlerBase
     // endregion
 
     // region Repository
+
+    /**
+     * @return MerchantRepository
+     */
+    protected function getMerchantRepository()
+    {
+        return $this->entityManager->getRepository('AppBundle:Merchant');
+    }
 
     /**
      * @return UserRepository

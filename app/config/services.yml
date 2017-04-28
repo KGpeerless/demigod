@@ -11,9 +11,19 @@ services:
         class: AppBundle\Security\User\UserProvider
         arguments: ["@app.user.handler"]
 
+    app.merchant.handler:
+        class: AppBundle\Handler\MerchantHandler
+        arguments: ["@doctrine.orm.entity_manager", "@form.factory"]
+        calls:
+            - [setUserPasswordEncoder, ["@security.password_encoder"]]
+            - [setApiSecretKey, ["%api_secret%"]]
+
     app.user.handler:
         class: AppBundle\Handler\UserHandler
         arguments: ["@doctrine.orm.entity_manager", "@form.factory"]
+        calls:
+            - [setUserPasswordEncoder, ["@security.password_encoder"]]
+            - [setApiSecretKey, ["%api_secret%"]]
 
     app.authentication.handler:
         class: AppBundle\Handler\AuthenticationHandler
